@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Smart Crop Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🌱 Smart Crop Recommendation System</h1>
+        <p>Enter soil and climate details to get the best crop suggestion.</p>
+
+        <form action="/predict" method="post" class="fade-in">
+            <input type="number" step="any" name="N" placeholder="Nitrogen (N)" required><br>
+            <input type="number" step="any" name="P" placeholder="Phosphorus (P)" required><br>
+            <input type="number" step="any" name="K" placeholder="Potassium (K)" required><br>
+            <input type="number" step="any" name="temperature" placeholder="Temperature (°C)" required><br>
+            <input type="number" step="any" name="humidity" placeholder="Humidity (%)" required><br>
+            <input type="number" step="any" name="ph" placeholder="Soil pH" required><br>
+            <input type="number" step="any" name="rainfall" placeholder="Rainfall (mm)" required><br>
+            <button type="submit">Predict Crop</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result grow">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
